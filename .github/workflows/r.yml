@@ -36,6 +36,9 @@ jobs:
   test:
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    defaults:
+      run:
+        shell: bash
 
     strategy:
       fail-fast: false
