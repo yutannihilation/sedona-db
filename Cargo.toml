@@ -67,15 +67,15 @@ bytes = "1.10"
 chrono = { version = "0.4.38", default-features = false }
 comfy-table = { version = "7.0" }
 criterion = { version = "0.5", features = ["html_reports"] }
-datafusion = { version = "49.0.0", default-features = false }
-datafusion-catalog = { version = "49.0.0" }
-datafusion-common = { version = "49.0.0", default-features = false }
-datafusion-common-runtime = { version = "49.0.0", default-features = false }
-datafusion-execution = { version = "49.0.0", default-features = false }
-datafusion-expr = { version = "49.0.0" }
-datafusion-ffi = {  version = "49.0.0" }
-datafusion-physical-expr = { version = "49.0.0" }
-datafusion-physical-plan = { version = "49.0.0" }
+datafusion = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688", default-features = false }
+datafusion-catalog = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688" }
+datafusion-common = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688", default-features = false }
+datafusion-common-runtime = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688", default-features = false }
+datafusion-execution = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688", default-features = false }
+datafusion-expr = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688" }
+datafusion-ffi = {  git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688" }
+datafusion-physical-expr = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688" }
+datafusion-physical-plan = { git = "https://github.com/yutannihilation/datafusion.git", branch = "49.0.2-pr-17688" }
 dirs = "6.0.0"
 env_logger = "0.11"
 futures = { version = "0.3" }
