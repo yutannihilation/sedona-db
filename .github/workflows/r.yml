@@ -25,14 +25,13 @@ on:
     branches:
       - main
     paths:
-      - 'Cargo.toml'
-      - 'Cargo.lock'
-      - '.github/workflows/r.yml'
-      - 'rust/**'
-      - 'c/**'
-      - 'r/**'
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - ".github/workflows/r.yml"
+      - "rust/**"
+      - "c/**"
+      - "r/**"
 jobs:
-
   test:
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
@@ -44,9 +43,9 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: ubuntu-latest, r: 'release'}
-          - {os: macos-latest, r: 'release'}
-          - {os: windows-latest, r: 'release'}
+          - { os: ubuntu-latest, r: "release" }
+          - { os: macos-latest, r: "release" }
+          - { os: windows-latest, r: "release" }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -66,6 +65,12 @@ jobs:
         run: |
           rustup toolchain install stable --no-self-update
           rustup default stable
+
+      # GHA runnder installes GNU target by default, but --no-self-update might
+      # remove it, so run `target add` to ensure the GNU target installed.
+      - name: Setup Rust (Windows)
+        if: matrix.config.os == 'windows-latest'
+        run: rustup target add x86_64-pc-windows-gnu
 
       - name: Install dependencies (Linux)
         if: matrix.config.os == 'ubuntu-latest'
@@ -91,4 +96,4 @@ jobs:
 
       - name: Test R Package
         run: |
-            R -e 'library(testthat); test_local("r/sedonadb", MultiReporter$new(list(CheckReporter$new(), LocationReporter$new())))'
+          R -e 'library(testthat); test_local("r/sedonadb", MultiReporter$new(list(CheckReporter$new(), LocationReporter$new())))'
