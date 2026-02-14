@@ -137,8 +137,13 @@ def run_sedonadb(
         FROM {view_name}
         WHERE
             categories.primary = 'pizza_restaurant'
-            AND bbox.xmin BETWEEN -75 AND -73
-            AND bbox.ymin BETWEEN 40 AND 41
+            AND ST_Intersects(
+                geometry,
+                ST_SetSRID(
+                    ST_GeomFromText('POLYGON((-75 40,-75 41,-73 41,-73 40,-75 40))'),
+                    4326
+                )
+            )
     """
 
     for _ in range(warmup):
